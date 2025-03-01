@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import Body from "./components/Body";
+
 
 function App() {
   return (
-    <div className="App">
-      <div className='text-3xl text-green-700'>
-        Namasthe Vijay
-      </div>
+    <div className="w-[100vw] h-[100vh]">
+      <Body />
     </div>
   );
 }
