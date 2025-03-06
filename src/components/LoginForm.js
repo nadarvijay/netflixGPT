@@ -1,5 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, } from 'react'
 import { validateSignIn, validateSignUp } from '../utils/validate';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux-store/userSlice';
 
 const LoginForm = () => {
 
@@ -12,25 +17,52 @@ const LoginForm = () => {
     const mobile = useRef(null);
     const password = useRef(null);
 
-    useEffect(() => {
-        if (signInErr == null) { console.log("Signed In") }
-    }, [signInErr])
-
-    useEffect(() => {
-        if (signUpErr == null) { setIsSignup(false) }
-    }, [signUpErr])
-
     const handleSignUpClick = () => {
         setIsSignup(prev => !prev)
     }
 
     const handleFormSubmit = () => {
         if (!isSignup) {
-            setSignInErr(validateSignIn(mobile?.current?.value, password?.current?.value));
+            const err = validateSignIn(email?.current?.value, password?.current?.value)
+            setSignInErr(err);
+            if (err != null) { return }
+
+            // if err == null
+            signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+                .then((userCredential) => {
+                    // Signed in 
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setSignInErr(errorMessage);
+                });
+
         }
         else {
-            console.log(validateSignUp(name?.current?.value, email?.current?.value, mobile?.current?.value));
-            setSignUpErr(validateSignUp(mobile?.current?.value, name?.current?.value, email?.current?.value))
+            const err = validateSignUp(email?.current?.value, name?.current?.value, mobile?.current?.value, password?.current?.value);
+            setSignUpErr(err);
+            if (err != null) { return }
+
+            // if err == null
+            createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+
+                    updateProfile(auth.currentUser, {
+                        displayName: name?.current?.value,
+                        phoneNumber: mobile?.current?.value,
+                        photoURL: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                    }).then(() => {
+
+                    }).catch((error) => {
+                    });
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setSignUpErr(errorMessage);
+                });
         }
     }
 
@@ -40,10 +72,10 @@ const LoginForm = () => {
                 <div className='font-semibold text-3xl text-white mb-5'>
                     {isSignup ? "Sign Up" : "Sign In"}
                 </div>
-                <input ref={mobile} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='number' placeholder='Mobile Number' />
-                {!isSignup && <input ref={password} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md' type='password' placeholder='Password' />}
+                <input ref={email} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='email' placeholder='Email' />
                 {isSignup && <input ref={name} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='text' placeholder='Full Name' />}
-                {isSignup && <input ref={email} className='w-[100%] p-2 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='email' placeholder='Email' />}
+                {isSignup && <input ref={mobile} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='number' placeholder='Mobile Number' />}
+                <input ref={password} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md' type='password' placeholder='Password' />
 
                 <div className='text-sm text-red-500 mb-4'>
                     {!isSignup ? signInErr : signUpErr}

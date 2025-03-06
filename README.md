@@ -7,6 +7,13 @@
 - SignUp Form
 - Form Validation
 - useRef Hook
+- firebase setup
+- deployed a prod build
+- Integrated SignIn/SignUp/SignOut Api
+- Created Redux store with user Slice
+- Implemented Update Profile
+- Refactored Code with routing in App and child routes in Body
+- Unsubscribed onAuthStateChanged
 
 # Features 
 

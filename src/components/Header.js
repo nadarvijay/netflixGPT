@@ -1,9 +1,25 @@
 import React from 'react'
+import { signOut } from 'firebase/auth';
+import { auth } from '../utils/firebase';
+import { useSelector } from 'react-redux';
+import { NetFlix_Logo } from '../utils/constants';
 
 const Header = () => {
+    const user = useSelector((state) => state.user);
+
+    const handleSignOut = () => {
+        signOut(auth).then(() => {
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
     return (
-        <div className='w-[100%]'>
-            <img className='w-[12%] ml-[10%] pt-[1%] shadow-2xl' src='https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png' alt='logo' />
+        <div className='w-[100%] bg-gradient-to-b from-black flex flex-row items-center justify-between'>
+            <img className='w-[12%] ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
+            <div className='mr-10 flex flex-row'>
+                <img src={user?.photoURL} className='w-[40px] h-[40px] rounded-[50%] mr-4' />
+                <button className='bg-gradient-to-tr from-red-700 p-2 px-4 rounded-md' onClick={handleSignOut}>Sign Out</button>
+            </div>
         </div>
     )
 }
