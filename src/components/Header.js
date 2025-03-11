@@ -14,7 +14,7 @@ const Header = () => {
         });
     }
     return (
-        <div className='w-[100%] bg-gradient-to-b from-black flex flex-row items-center justify-between'>
+        <div className='w-[100%] bg-gradient-to-b from-black flex flex-row items-center justify-between absolute z-10'>
             <img className='w-[12%] ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
             <div className='mr-10 flex flex-row'>
                 <img src={user?.photoURL} className='w-[40px] h-[40px] rounded-[50%] mr-4' />
