@@ -22,6 +22,11 @@
 - Fetch Data for trailer videos in Custom Hook and update store
 - Embeded the Youtube Video and made it autoPlay and mute
 - Changed Css to make it similar to netflix
+- Built Secondary Component
+- Built Movie list and Movie Card
+- TMDB Image CDN url
+- Made custom Hooks for different APIs : usePopularMovies , useTopRatedMovies , useUpcomingMovies
+
 
 # Features 
 
