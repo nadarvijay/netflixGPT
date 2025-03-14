@@ -1,11 +1,17 @@
 import React from 'react'
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NetFlix_Logo } from '../utils/constants';
+import { setSearchPageToggle } from '../redux-store/gptSlice';
+import { LANG_LIST } from '../utils/constants';
+import { setCurrentLang } from '../redux-store/langSlice';
 
 const Header = () => {
     const user = useSelector((state) => state.user);
+    const searchPageToggle = useSelector(state => state.gpt.searchPageToggle);
+
+    const dispatch = useDispatch()
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
@@ -13,13 +19,38 @@ const Header = () => {
             console.error(error);
         });
     }
+
+    const handleSearchClick = () => {
+        dispatch(setSearchPageToggle());
+    }
+
+    const handleLangSelect = (e) => {
+        dispatch(setCurrentLang(e.target.value));
+    }
+
     return (
         <div className='w-[100%] bg-gradient-to-b from-black flex flex-row items-center justify-between absolute z-10'>
             <img className='w-[12%] ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
-            <div className='mr-10 flex flex-row'>
-                <img src={user?.photoURL} className='w-[40px] h-[40px] rounded-[50%] mr-4' />
-                <button className='bg-gradient-to-tr from-red-700 p-2 px-4 rounded-md' onClick={handleSignOut}>Sign Out</button>
-            </div>
+            {
+                user &&
+                <div className='mr-10 flex flex-row'>
+                    {
+                        searchPageToggle &&
+                        <select className='bg-black px-2 py-2 mr-5 text-white' onChange={handleLangSelect}>
+                            {LANG_LIST.map((option) => (
+                                <option value={option.val}>
+                                    {option.name}
+                                </option>
+                            ))}
+                        </select>
+                    }
+                    <img src={user?.photoURL} className='w-[40px] h-[40px] rounded-[50%] mr-4' />
+                    <button onClick={handleSearchClick} className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md'>
+                        {searchPageToggle ? "Home Page" : "Search GPT"}
+                    </button>
+                    <button className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md' onClick={handleSignOut}>Sign Out</button>
+                </div>
+            }
         </div>
     )
 }

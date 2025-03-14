@@ -2,9 +2,6 @@ import React, { useState, useRef, } from 'react'
 import { validateSignIn, validateSignUp } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../redux-store/userSlice';
 
 const LoginForm = () => {
 
@@ -14,7 +11,6 @@ const LoginForm = () => {
 
     const name = useRef(null);
     const email = useRef(null);
-    const mobile = useRef(null);
     const password = useRef(null);
 
     const handleSignUpClick = () => {
@@ -40,7 +36,7 @@ const LoginForm = () => {
 
         }
         else {
-            const err = validateSignUp(email?.current?.value, name?.current?.value, mobile?.current?.value, password?.current?.value);
+            const err = validateSignUp(email?.current?.value, name?.current?.value, password?.current?.value);
             setSignUpErr(err);
             if (err != null) { return }
 
@@ -51,7 +47,6 @@ const LoginForm = () => {
 
                     updateProfile(auth.currentUser, {
                         displayName: name?.current?.value,
-                        phoneNumber: mobile?.current?.value,
                         photoURL: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
                     }).then(() => {
 
@@ -67,14 +62,13 @@ const LoginForm = () => {
     }
 
     return (
-        <form className='w-[100%] flex flex-col items-center'>
+        <form className='w-[100%] h-[100%] flex flex-col items-center justify-center'>
             <div className='w-[25%] flex flex-col p-[60px] bg-black opacity-85'>
                 <div className='font-semibold text-3xl text-white mb-5'>
                     {isSignup ? "Sign Up" : "Sign In"}
                 </div>
                 <input ref={email} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='email' placeholder='Email' />
                 {isSignup && <input ref={name} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='text' placeholder='Full Name' />}
-                {isSignup && <input ref={mobile} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' type='number' placeholder='Mobile Number' />}
                 <input ref={password} className='w-[100%] p-2 mb-4 bg-black border border-white opacity-60 text-[#B9B9B9] outline-none rounded-md' type='password' placeholder='Password' />
 
                 <div className='text-sm text-red-500 mb-4'>

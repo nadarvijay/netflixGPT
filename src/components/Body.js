@@ -17,7 +17,6 @@ const Body = () => {
                 dispatch(setUser({
                     displayName: user?.displayName,
                     email: user?.email,
-                    phoneNumber: user?.phoneNumber,
                     photoURL: user?.photoURL,
                 }));
 

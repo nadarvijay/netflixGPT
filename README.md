@@ -26,6 +26,9 @@
 - Built Movie list and Movie Card
 - TMDB Image CDN url
 - Made custom Hooks for different APIs : usePopularMovies , useTopRatedMovies , useUpcomingMovies
+- GPT Search Page
+- GPT Search Bar
+- Multilingual Support to our app
 
 
 # Features 
