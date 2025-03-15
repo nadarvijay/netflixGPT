@@ -29,26 +29,26 @@ const Header = () => {
     }
 
     return (
-        <div className='w-[100%] bg-gradient-to-b from-black flex flex-row items-center justify-between absolute z-10'>
-            <img className='w-[12%] ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
+        <div className='w-[100%] bg-gradient-to-b from-black flex flex-col sm:flex-row items-center justify-between absolute z-10'>
+            <img className='w-[35%] sm:w-[12%] sm:ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
             {
                 user &&
-                <div className='mr-10 flex flex-row'>
+                <div className='sm:mr-10 flex flex-row items-center'>
                     {
                         searchPageToggle &&
                         <select className='bg-black px-2 py-2 mr-5 text-white' onChange={handleLangSelect}>
                             {LANG_LIST.map((option) => (
-                                <option value={option.val}>
+                                <option key={option.val} value={option.val}>
                                     {option.name}
                                 </option>
                             ))}
                         </select>
                     }
-                    <img src={user?.photoURL} className='w-[40px] h-[40px] rounded-[50%] mr-4' />
+                    <img src={user?.photoURL} className='hidden sm:block w-[40px] h-[40px] rounded-[50%] mr-4' />
                     <button onClick={handleSearchClick} className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md'>
                         {searchPageToggle ? "Home Page" : "Search GPT"}
                     </button>
-                    <button className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md' onClick={handleSignOut}>Sign Out</button>
+                    <button className='bg-red-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md' onClick={handleSignOut}>Sign Out</button>
                 </div>
             }
         </div>

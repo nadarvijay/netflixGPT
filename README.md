@@ -29,6 +29,12 @@
 - GPT Search Page
 - GPT Search Bar
 - Multilingual Support to our app
+- Made an account in Platforms.openAI
+- Integrated Search with OpenAi Api
+- Made Search Suggestion component , reused movieList component
+- Added a env file and secured the api keys , But while deploying we have to add the env setting in server
+- Added .env in git ignore file
+- Implemented memoization while fetching movie Lists in browse page
 
 
 # Features 
