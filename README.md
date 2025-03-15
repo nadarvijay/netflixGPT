@@ -35,6 +35,8 @@
 - Added a env file and secured the api keys , But while deploying we have to add the env setting in server
 - Added .env in git ignore file
 - Implemented memoization while fetching movie Lists in browse page
+- Made app responsive for mobile view
+- Made app responsive for all devices
 
 
 # Features 

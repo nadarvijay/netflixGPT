@@ -29,7 +29,7 @@ const Header = () => {
     }
 
     return (
-        <div className='w-[100%] bg-gradient-to-b from-black flex flex-col sm:flex-row items-center justify-between absolute z-10'>
+        <div className='w-[100%] bg-gradient-to-b from-black flex flex-col sm:flex-row sm:py-3 lg:py-0 items-center justify-between absolute z-10'>
             <img className='w-[35%] sm:w-[12%] sm:ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
             {
                 user &&

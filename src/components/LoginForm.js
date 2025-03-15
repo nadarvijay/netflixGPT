@@ -63,7 +63,7 @@ const LoginForm = () => {
 
     return (
         <form className='w-[100%] h-[100%] flex flex-col items-center justify-center'>
-            <div className='w-[90%] sm:w-[25%] -mt-40 sm:mt-0 flex flex-col p-[60px] bg-black opacity-85'>
+            <div className='w-[90%] sm:w-[70%] md:w-[50%] lg:w-[25%] sm:mt-0 flex flex-col p-[60px] bg-black opacity-85'>
                 <div className='font-semibold text-3xl text-white mb-5'>
                     {isSignup ? "Sign Up" : "Sign In"}
                 </div>
