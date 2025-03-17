@@ -2,6 +2,7 @@ import React, { useState, useRef, } from 'react'
 import { validateSignIn, validateSignUp } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { PROFILE_IMG } from '../utils/constants';
 
 const LoginForm = () => {
 
@@ -47,7 +48,7 @@ const LoginForm = () => {
 
                     updateProfile(auth.currentUser, {
                         displayName: name?.current?.value,
-                        photoURL: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                        photoURL: PROFILE_IMG
                     }).then(() => {
 
                     }).catch((error) => {
@@ -59,6 +60,18 @@ const LoginForm = () => {
                     setSignUpErr(errorMessage);
                 });
         }
+    }
+
+    const handleBypassSignIn = () => {
+        signInWithEmailAndPassword(auth, "nadarvijay@gmail.com", "Vijay1234")
+            .then((userCredential) => {
+                // Signed in 
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setSignInErr(errorMessage);
+            });
     }
 
     return (
@@ -77,6 +90,10 @@ const LoginForm = () => {
 
                 <div className='bg-red-600 p-2 text-white text-lg font-light text-center rounded-md cursor-pointer' onClick={handleFormSubmit}>
                     {isSignup ? "Sign Up" : "Sign In"}
+                </div>
+
+                <div className='bg-red-600 p-2 mt-4 text-white text-lg font-light text-center rounded-md cursor-pointer' onClick={handleBypassSignIn}>
+                    Bypass Sign In
                 </div>
 
                 {!isSignup ?

@@ -38,6 +38,9 @@
 - Made app responsive for mobile view
 - Made app responsive for all devices
 
+- Added Autoplay Feature in Video
+- Added Bypass SignIn
+
 
 # Features 
 

@@ -10,6 +10,8 @@ export const API_OPTIONS = {
 
 export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w500"
 
+export const PROFILE_IMG = "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+
 export const BG_IMG = "bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/04ef06cc-5f81-4a8e-8db0-6430ba4af286/web/IN-en-20250224-TRIFECTA-perspective_3a9c67b5-1d1d-49be-8499-d179f6389935_large.jpg')]"
 
 export const LANG_LIST = [{ name: "English", val: "en" }, { name: "Hindi", val: "hin" }, { name: "Tamil", val: "tam" }]
