@@ -40,6 +40,8 @@
 
 - Added Autoplay Feature in Video
 - Added Bypass SignIn
+- Added new feature of Trailer Pop up in center of screen
+- Integrated Search with Gemini AI
 
 
 # Features 

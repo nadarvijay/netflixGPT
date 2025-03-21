@@ -1,21 +1,18 @@
-import React from 'react'
+import React from 'react';
 import useFetchMovieTrailer from '../hooks/useFetchMovieTrailer';
-import { useSelector } from 'react-redux';
 
 const VideoBackground = ({ movieId }) => {
-
-    useFetchMovieTrailer(movieId);
-    const trailer = useSelector((state) => state.movies?.trailer)
+    const trailer = useFetchMovieTrailer(movieId);
 
     return (
-        <iframe className='w-screen h-auto sm:aspect-video pt-[30%] sm:pt-0 bg-black'
-            src={"https://www.youtube.com/embed/" + trailer?.key + "?&autoplay=1&mute=1&playlist=" + trailer?.key + "&loop=1&controls=0&showinfo=0"}
+        <iframe className='w-[100%] h-auto sm:aspect-video pt-[30%] sm:pt-0 bg-black'
+            src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&playlist=${trailer?.key}&loop=1&controls=0&showinfo=0`}
             title="YouTube video player"
             allow="autoplay"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen>
         </iframe>
-    )
+    );
 }
 
-export default VideoBackground
+export default VideoBackground;

@@ -17,3 +17,4 @@ export const BG_IMG = "bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/04ef0
 export const LANG_LIST = [{ name: "English", val: "en" }, { name: "Hindi", val: "hin" }, { name: "Tamil", val: "tam" }]
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;

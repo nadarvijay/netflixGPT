@@ -35,7 +35,6 @@ const Header = () => {
                 user &&
                 <div className='sm:mr-10 flex flex-row items-center'>
                     {
-                        searchPageToggle &&
                         <select className='bg-black px-2 py-2 mr-5 text-white' onChange={handleLangSelect}>
                             {LANG_LIST.map((option) => (
                                 <option key={option.val} value={option.val}>
@@ -46,7 +45,7 @@ const Header = () => {
                     }
                     <img src={user?.photoURL} className='hidden sm:block w-[40px] h-[40px] rounded-[50%] mr-4' />
                     <button onClick={handleSearchClick} className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md'>
-                        {searchPageToggle ? "Home Page" : "Search GPT"}
+                        {searchPageToggle ? "Home Page" : "Search Gemini"}
                     </button>
                     <button className='bg-red-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md' onClick={handleSignOut}>Sign Out</button>
                 </div>

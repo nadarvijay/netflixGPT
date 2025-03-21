@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import TrailerPopUp from "../components/TrailerPopUp";
 
 const moviesSlice = createSlice({
     name: 'movies',
@@ -7,7 +8,8 @@ const moviesSlice = createSlice({
         popularMovies: null,
         topRatedMovies: null,
         upcomingMovies: null,
-        trailer: null
+        currentTrailerData: null,
+        trailerPopUpToggle: false
     },
     reducers: {
         addNowPlayingMovies: (state, action) => {
@@ -22,11 +24,14 @@ const moviesSlice = createSlice({
         addUpcomingMovies: (state, action) => {
             state.upcomingMovies = action.payload;
         },
-        setTrailer: (state, action) => {
-            state.trailer = action.payload
+        setCurrentTrailerData: (state, action) => {
+            state.currentTrailerData = action.payload
+        },
+        setTrailerPopUpToggle: (state) => {
+            state.trailerPopUpToggle = !state.trailerPopUpToggle
         }
     }
 })
 
-export const { addNowPlayingMovies, setTrailer, addPopularMovies, addTopRatedMovies, addUpcomingMovies } = moviesSlice.actions;
+export const { addNowPlayingMovies, addPopularMovies, addTopRatedMovies, addUpcomingMovies, setCurrentTrailerData, setTrailerPopUpToggle } = moviesSlice.actions;
 export default moviesSlice.reducer;
