@@ -42,7 +42,12 @@
 - Added Bypass SignIn
 - Added new feature of Trailer Pop up in center of screen
 - Integrated Search with Gemini AI
+- Made seperate components for trailer PopUP
+- Made the Trailer Pop up responsive
 
+# To DO
+- Add multiLingual Support
+- Video Reels Section
 
 # Features 
 

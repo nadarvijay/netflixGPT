@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import VideoTitle from './VideoTitle';
-import VideoBackground from './VideoBackground';
 import { setTrailerPopUpToggle } from '../redux-store/moviesSlice';
+import TrailerVideoBackground from './TrailerVideoBackground';
+import TrailerVideoTitle from './TrailerVideoTitle';
 
 const TrailerPopUp = () => {
     const videoData = useSelector(state => state.movies.currentTrailerData);
@@ -18,7 +18,7 @@ const TrailerPopUp = () => {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50" onClick={handleClose}>
             <div
-                className="relative w-[70%] bg-black rounded-lg p-2 shadow-lg"
+                className="relative w-[90%] md:w-[70%] bg-black rounded-lg p-2 shadow-lg"
                 onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
             >
                 <button
@@ -28,8 +28,8 @@ const TrailerPopUp = () => {
                     ✕
                 </button>
 
-                <VideoTitle title={videoData?.title} summary={videoData?.overview} />
-                <VideoBackground movieId={videoData?.id} />
+                <TrailerVideoTitle title={videoData?.title} summary={videoData?.overview} />
+                <TrailerVideoBackground movieId={videoData?.id} />
             </div>
         </div>
     );
