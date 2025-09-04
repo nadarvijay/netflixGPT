@@ -45,7 +45,11 @@
 - Made seperate components for trailer PopUP
 - Made the Trailer Pop up responsive
 
+- Provided Offline experience using Service Worker Cache
+
+
 # To DO
+- Shimmer Ui
 - Add multiLingual Support
 - Video Reels Section
 
