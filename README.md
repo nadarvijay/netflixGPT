@@ -46,10 +46,13 @@
 - Made the Trailer Pop up responsive
 
 - Provided Offline experience using Service Worker Cache
+- Shimmer Ui
+- Optimized LightHouse score from 71 to 85
+    By increasing CLS score from 5 to 25 by adding Shimmer UI and decreasing the layout shift
 
 
 # To DO
-- Shimmer Ui
+- Optimize Shimmer UI of cards (height precise)
 - Add multiLingual Support
 - Video Reels Section
 
@@ -68,3 +71,8 @@
 - NetFlix GPT
     - Search Bar
     - Movie Suggestions
+
+# Deployed in firebase
+    - firebase login
+    - npm run build
+    - firebase deploy

@@ -1,8 +1,6 @@
 import React from 'react';
-import useFetchMovieTrailer from '../hooks/useFetchMovieTrailer';
 
-const VideoBackground = ({ movieId }) => {
-    const trailer = useFetchMovieTrailer(movieId);
+const VideoBackground = ({ trailer }) => {
 
     return (
         <iframe className='w-[100%] h-auto sm:aspect-video pt-[30%] sm:pt-0 bg-black'
@@ -16,3 +14,4 @@ const VideoBackground = ({ movieId }) => {
 }
 
 export default VideoBackground;
+// 56.25

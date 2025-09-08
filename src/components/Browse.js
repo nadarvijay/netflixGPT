@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './mainContainer'
@@ -9,6 +9,7 @@ import useUpcomingMovies from '../hooks/useUpcomingMovies'
 import GptSearchPage from './GptSearchPage'
 import { useSelector } from 'react-redux'
 import TrailerPopUp from './TrailerPopUp'
+import useFetchMovieTrailer from '../hooks/useFetchMovieTrailer'
 
 const Browse = () => {
 
@@ -18,6 +19,8 @@ const Browse = () => {
     useUpcomingMovies();
 
     const searchToggle = useSelector((state) => state.gpt.searchPageToggle)
+    const videoData = useSelector((state) => state.movies.nowPlayingMovies)
+    const trailer = useFetchMovieTrailer(videoData?.[0]?.id);
 
     return (
         <div>
@@ -25,7 +28,13 @@ const Browse = () => {
             {
                 searchToggle ? <GptSearchPage /> :
                     <>
-                        <MainContainer />
+                        {
+                            trailer ?
+                                <MainContainer videoData={videoData} trailer={trailer} />
+                                :
+                                <div className='w-[100%] h-[56.5vw] pt-[30%] sm:pt-0 bg-gray-400 animate-pulse'>
+                                </div>
+                        }
                         <SecondaryContainer />
                         <TrailerPopUp />
 
