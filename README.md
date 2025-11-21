@@ -96,4 +96,7 @@
 
     - Create github actions workflows in root folder of project
         .github/workflows/firebase-deploy.yml (in VS code)
+
+    - Also enable firebase api option. As github action uses the firebase apis to deploy using firebase tools
+        Google Cloud Console -> APIs & Services -> enable api and wait for 2 minutes
     
