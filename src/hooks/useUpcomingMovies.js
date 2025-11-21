@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from '../redux-store/moviesSlice'
