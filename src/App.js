@@ -4,9 +4,6 @@ import appStore from "./redux-store/appStore";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from "./components/Login";
 import Browse from "./components/Browse";
-import TrailerPopUp from "./components/TrailerPopUp";
-import { useEffect } from "react";
-
 
 function App() {
   const appRouter = createBrowserRouter([

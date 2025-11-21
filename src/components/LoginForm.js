@@ -30,7 +30,6 @@ const LoginForm = () => {
                     // Signed in 
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
                     const errorMessage = error.message;
                     setSignInErr(errorMessage);
                 });
@@ -44,8 +43,6 @@ const LoginForm = () => {
             // if err == null
             createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
                 .then((userCredential) => {
-                    const user = userCredential.user;
-
                     updateProfile(auth.currentUser, {
                         displayName: name?.current?.value,
                         photoURL: PROFILE_IMG
@@ -55,7 +52,6 @@ const LoginForm = () => {
                     });
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
                     const errorMessage = error.message;
                     setSignUpErr(errorMessage);
                 });
@@ -68,7 +64,6 @@ const LoginForm = () => {
                 // Signed in 
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 setSignInErr(errorMessage);
             });

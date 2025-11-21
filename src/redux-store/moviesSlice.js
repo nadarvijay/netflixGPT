@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import TrailerPopUp from "../components/TrailerPopUp";
 
 const moviesSlice = createSlice({
     name: 'movies',

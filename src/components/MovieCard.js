@@ -1,7 +1,7 @@
 import React from 'react'
-import { API_OPTIONS, IMAGE_CDN_URL } from '../utils/constants'
+import { IMAGE_CDN_URL } from '../utils/constants'
 import { useDispatch } from 'react-redux'
-import { setCurrentTrailerData, setTrailer, setTrailerPopUpToggle } from '../redux-store/moviesSlice'
+import { setCurrentTrailerData, setTrailerPopUpToggle } from '../redux-store/moviesSlice'
 
 const MovieCard = ({ movieData }) => {
     const dispatch = useDispatch();

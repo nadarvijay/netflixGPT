@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import VideoBackground from './VideoBackground'
 import VideoTitle from './VideoTitle'
 
