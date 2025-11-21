@@ -29,7 +29,7 @@ const Body = () => {
 
         //Unsubscribes onAuthStateChanged when body component unmounts
         return () => { authSubscribe() }
-    }, [])
+    }, [dispatch, navigate])
 
 
     return (

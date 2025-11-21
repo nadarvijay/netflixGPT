@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { API_OPTIONS } from "../utils/constants";
 
 const useFetchMovieTrailer = (movieId) => {
@@ -6,9 +6,9 @@ const useFetchMovieTrailer = (movieId) => {
 
     useEffect(() => {
         fetchMovieTrailer();
-    }, [movieId]);
+    }, [movieId, fetchMovieTrailer]);
 
-    const fetchMovieTrailer = async () => {
+    const fetchMovieTrailer = useCallback(async () => {
         try {
             const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, API_OPTIONS);
             const videoData = await response.json();
@@ -18,7 +18,7 @@ const useFetchMovieTrailer = (movieId) => {
         } catch (error) {
             console.error("Error fetching movie trailer:", error);
         }
-    };
+    }, [trailer])
 
     return trailer;
 }
