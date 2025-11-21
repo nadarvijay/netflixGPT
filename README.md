@@ -99,6 +99,3 @@
 
     - Also enable firebase api option. As github action uses the firebase apis to deploy using firebase tools
         Google Cloud Console -> APIs & Services -> enable api and wait for 2 minutes
-    
-    - Also enable firebase Cloud Resource Manager API
-        Google Cloud Console -> APIs & Services -> Search for Cloud Resource Manager API -> enable api and wait for minutes
