@@ -76,3 +76,24 @@
     - firebase login
     - npm run build
     - firebase deploy
+
+# CI/CD using GitHub Actions
+    - Install Firebase tools : npm install -g firebase-tools
+
+    - Login to firebase : firebase login
+
+    - As GitHub Actions cannot log in; you need a token.So generate a token using 
+       ** DEPRECATED ** firebase login:ci   (It will output a long token)
+
+    - As the above method is deprecated , so use future proof method
+        - Create Service Account
+            Google Cloud Console → IAM → Service Accounts → Create service account
+            Give it Role -> Firebase Admin , Firebase Hosting Admin
+            Then generate a JSON key and download it
+        - Save service account JSON in GitHub Secrets
+            Open GitHub → Your Repo → Settings → Secrets → Actions
+            Create NEW SECRET -> FIREBASE_SERVICE_ACCOUNT and paste the whole downloaded JSON content
+
+    - Create github actions workflows in root folder of project
+        .github/workflows/firebase-deploy.yml (in VS code)
+    

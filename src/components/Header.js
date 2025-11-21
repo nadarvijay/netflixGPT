@@ -2,7 +2,6 @@ import React from 'react'
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
-import { NetFlix_Logo } from '../utils/constants';
 import { setSearchPageToggle } from '../redux-store/gptSlice';
 import { LANG_LIST } from '../utils/constants';
 import { setCurrentLang } from '../redux-store/langSlice';
@@ -30,7 +29,7 @@ const Header = () => {
 
     return (
         <div className='w-[100%] bg-gradient-to-b from-black flex flex-col sm:flex-row sm:py-3 lg:py-0 items-center justify-between absolute z-10'>
-            <img className='w-[35%] sm:w-[12%] sm:ml-[10%] pt-[1%]' src={NetFlix_Logo} alt='logo' />
+            <img className='w-[35%] sm:w-[12%] sm:ml-[10%] pt-[1%]' src='TrailerVerselogo.png' alt='logo' />
             {
                 user &&
                 <div className='sm:mr-10 flex flex-row items-center'>
@@ -43,7 +42,8 @@ const Header = () => {
                             ))}
                         </select>
                     }
-                    <img src={user?.photoURL} className='hidden sm:block w-[40px] h-[40px] rounded-[50%] mr-4' />
+                    <img src={user?.photoURL} className='hidden sm:block w-[40px] h-[40px] rounded-[50%] mr-4' alt='profileImg' />
+                    <h1>Vijay</h1>
                     <button onClick={handleSearchClick} className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md'>
                         {searchPageToggle ? "Home Page" : "Search Gemini"}
                     </button>
