@@ -43,7 +43,6 @@ const Header = () => {
                         </select>
                     }
                     <img src={user?.photoURL} className='hidden sm:block w-[40px] h-[40px] rounded-[50%] mr-4' alt='profileImg' />
-                    <h1>Vijay</h1>
                     <button onClick={handleSearchClick} className='bg-red-600 text-white font-semibold py-2 px-4 mr-4 rounded-md hover:bg-red-700 transition-all duration-300 shadow-md'>
                         {searchPageToggle ? "Home Page" : "Search Gemini"}
                     </button>
