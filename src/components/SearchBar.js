@@ -42,6 +42,14 @@ const SearchBar = () => {
         }
     };
 
+    const handleSearchFocus = () => {
+        gptSearchText.current.placeholder = "";
+    }
+
+    const handleSearchBlur = () => {
+        gptSearchText.current.placeholder = lang[currentLang].searchPlaceHolder;
+    }
+
     return (
         <div className='bg-black px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-center w-[90%] md:w-[70%] lg:w-[40%] rounded-md opacity-90'>
             <input
@@ -49,6 +57,8 @@ const SearchBar = () => {
                 className='w-[83%] py-2 px-2 sm:px-4 outline-none rounded-md mr-3'
                 type='text'
                 placeholder={lang[currentLang].searchPlaceHolder}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
             />
             <button
                 onClick={handleSearchClick}
