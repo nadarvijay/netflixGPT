@@ -99,3 +99,5 @@
 
     - Also enable firebase api option. As github action uses the firebase apis to deploy using firebase tools
         Google Cloud Console -> APIs & Services -> enable api and wait for 2 minutes
+
+    - Add env variables as well inside github repo secret key, they will be injected during the build time
