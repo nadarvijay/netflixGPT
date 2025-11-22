@@ -27,8 +27,12 @@ jobs:
 
       # 4️⃣ Build the React project
       - name: Build app
-        run: npm run build
-
+        run: |
+          echo "REACT_APP_OPENAI_KEY=${{ secrets.REACT_APP_OPENAI_KEY }}" >> .env
+          echo "REACT_APP_TMDB_TOKEN=${{ secrets.REACT_APP_TMDB_TOKEN }}" >> .env
+          echo "REACT_APP_GEMINI_KEY=${{ secrets.REACT_APP_GEMINI_KEY }}" >> .env
+          npm run build
+          
       # 5️⃣ Deploy to Firebase Hosting (OFFICIAL ACTION)
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
