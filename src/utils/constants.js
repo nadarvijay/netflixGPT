@@ -18,3 +18,4 @@ export const LANG_LIST = [{ name: "English", val: "en" }, { name: "Hindi", val: 
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
 export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
+export const vijay = 'dummy'
