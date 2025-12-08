@@ -101,3 +101,21 @@
         Google Cloud Console -> APIs & Services -> enable api and wait for 2 minutes
 
     - Add env variables as well inside github repo secret key, they will be injected during the build time
+
+# End to End Testing using Cypress
+    - Install cypress : npm install cypress --save-dev
+
+    - Open Cypress app : npx cypress open
+        This will open the cypress app from which select
+            end to end testing -> Chrome -> this will open the chrome browser
+            After that select the cypress to automatically set up the scafold folder structure.
+            This will create the folder cypress
+            Inside cypress -> We will write all our test suites inside e2e folder.
+
+    - After installation of cypress and folder creation lets start writing the test suites
+    
+    - After writing the test suites we have 2 options to run the test suites 
+        1. Run the test suit in terminal itself : npx cypress run
+            for headed use : npx cypress run --headed (this will open theh browser)
+        2. Run the test in cypress app
+            npx cypress open -> select the spec folder to run test
