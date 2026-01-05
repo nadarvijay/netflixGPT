@@ -40,4 +40,4 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}" # Its fetched automatically from github
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
-          projectId: netflix-gpt-bcf8a
+          projectId: trailerverse-2b6b0

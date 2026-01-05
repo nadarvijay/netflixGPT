@@ -119,3 +119,41 @@
             for headed use : npx cypress run --headed (this will open theh browser)
         2. Run the test in cypress app
             npx cypress open -> select the spec folder to run test
+
+    - Locators in Cypress
+        We use css selectors as locator in cypress
+        eg. cy.get("#search_query_top").type("T-shirts"); -> In this we are locating search input and typing T-shirts in it
+            cy.get("[name='submit_search']").click() -> In this we are fetching element using name attribute and clicking on it
+            Assertion :
+            cy.get(".lighter").contains("T-Shirts") -> In this we are fetching the lighter class elememnt and checking the text inside it.
+
+    - Assertions in Cypress
+        1. Implicit Assertions:
+            It usually contains 2 keywords "should" , "and".
+            eg.
+                cy.url.should('include','ograngehrm')
+                cy.url.should('eq','ograngehrm.com')
+                            OR
+                cy.url.should('include','ograngehrm')
+                .should('eq','ograngehrm.com')
+                            OR
+                cy.url.should('include','ograngehrm')
+                .and('eq','ograngehrm.com')
+            
+            eg.
+                cy.get("input[placeholder="UserName"]").should('have.value',Admin);
+                
+        2. Explicit Assertions:
+            It usually contains 2 keywords: expect(For BDD) and assert(For TDD)
+            eg.  In this example as its a promise we are using then and getting the value through x, we can also use async/await
+                cy.get("user-dropDown").then((x)=>{
+                    let userName = x.text();
+
+                    // BDD style
+                    expect(userName).to.equal("Vijay");
+
+                    // TDD style
+                    assert.equal('userName',"Vijay")
+                });
+
+        

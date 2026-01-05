@@ -93,7 +93,7 @@ const LoginForm = () => {
 
                 {!isSignup ?
                     <div className='text-[#B9B9B9] mt-2'>
-                        New to NetFlix ?<span className='text-white cursor-pointer' onClick={handleSignUpClick}> Sign up now</span>
+                        New to TrailerVerse ?<span className='text-white cursor-pointer' onClick={handleSignUpClick}> Sign up now</span>
                     </div>
                     :
                     <div className='text-[#B9B9B9] mt-2'>

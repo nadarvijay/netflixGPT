@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "netflix-gpt-bcf8a"
-  }
+    "default": "trailerverse-2b6b0",
+    "trailerverse": "trailerverse-2b6b0"
+  },
+  "targets": {},
+  "etags": {}
 }
